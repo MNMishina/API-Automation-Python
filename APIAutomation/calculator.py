@@ -1,21 +1,19 @@
 #       Simple Calculator
 
 a = int(input("Enter first number: "))
+symbol = input("What do you want to do with your numbers ? (+, -, *, /): ")
 b = int(input("Enter second number: "))
 
-print("What do you want to do with your numbers ? (+, -, *, /)")
-simbol = input()
-
-if simbol == "+":
+if symbol == "+":
     result = a + b
     print("Result is: " + str(result))
-elif simbol == "-":
+elif symbol == "-":
     result = a - b
     print("Result is: " + str(result))
-elif simbol == "*":
+elif symbol == "*":
     result = a * b
     print("Result is: " + str(result))
-elif simbol == "/":
+elif symbol == "/":
     try:
         result = (a / b)
     except ZeroDivisionError:

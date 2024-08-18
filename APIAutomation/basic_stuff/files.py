@@ -11,7 +11,7 @@
 # fw.write("Hello !")
 # fw.close()
 
-fr = open('doc/file.txt', 'r')
+fr = open('../doc/file.txt', 'r')
 text = fr.read()
 fr.close()
 

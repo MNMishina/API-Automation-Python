@@ -54,9 +54,36 @@ class Test_create_new_user:
         assert check_last_name == "Weaver"
         print("User's last name is: " + check_last_name)
 
+    def test_update_user(self):
+        base_url = "https://reqres.in"
+        put_resource = "/api/users/2"
+        put_url = base_url + put_resource
+        print(put_url)
 
-new_user = Test_create_new_user()
-new_user.test_create_user()
+        json_for_update_user = {
+            "name": "morpheus",
+            "job": "zion resident"
+        }
+        result_put = requests.put(put_url, json=json_for_update_user)
+        print(str(result_put.status_code))
+        result_put.encoding = 'utf-8'
+        print(result_put.text)
 
-get_single_user = Test_create_new_user()
-get_single_user.test_get_user()
+        assert 200 == result_put.status_code
+        check = result_put.json()
+        check_name = check.get("name")
+        assert check_name == "morpheus"
+        check_job = check.get("job")
+        assert check_job == "zion resident"
+        print("Success")
+
+    def test_delete_user(self):
+        base_url = "https://reqres.in"
+        delete_resource = "/api/users/2"
+        delete_url = base_url + delete_resource
+        print(delete_url)
+        result = requests.delete(delete_url)
+        print(str(result.status_code))
+
+        assert 204 == result.status_code
+        print("Success")
